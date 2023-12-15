@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body class="body-background">
+<header th:insert="fragments :: header"></header>
+
+<div class="container text-white">
+			<h1>Foto:</h1>	
+			 <i class="fas fa-eye"></i>
+			<form class="d-flex my-4 col-3" role="search">
+		        <input class="form-control me-2 bg-transparent" type="search" placeholder="Search" aria-label="Search" name="search" th:value="${search}">
+		        <button class="btn btn-outline-success" type="submit">Search</button>
+     		 </form>	
+			  <div th:if="${#lists.isEmpty(foto)}">
+	            <p>Nessuna foto disponibile al momento.</p>
+	        </div>
+			<table class="table table-bordered">
+            <thead>
+                <tr >
+					<th class="bg-transparent"></th>
+                    <th class="bg-transparent">Titolo</th>
+                    <th class="bg-transparent">Descrizione</th>
+                    <th class="bg-transparent">Foto</th>
+                    <th class="bg-transparent">Visibile</th>
+                    <th class="bg-transparent"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="foto : ${foto}" >
+					<td class="bg-transparent "><a th:href="@{/foto/{id}(id=${foto.id})}"  class="text-decoration-none text-warning btn">Apri</a></td>
+                    <td class="bg-transparent text-white" th:text="${foto.titolo}"></a></td>
+                    <td class="bg-transparent text-white" th:text="${foto.descrizione}"></td>
+                    <td class="bg-transparent text-white"><img th:src="${foto.url}" alt="foto Image" style="max-width: 100px; max-height: 100px;"></td>
+                    <td class="bg-transparent text-white" >
+						 <span th:if="${foto.visibile}" class="text-success">
+			                Visibile
+			            </span>
+			            <span th:unless="${foto.visibile}" class="text-danger">
+			                Non Visibile
+			            </span>
+					</td>
+					<!-- <td class="bg-transparent "><a th:href="@{/foto/edit/{id}(id=${pizza.id})}"  class="text-decoration-none text-warning btn">Modifica</a><br> 
+                	
+					    <form th:action="@{/foto/delete/{id}(id=${.id})}" method="POST">
+					        <input type="submit" value="Elimina" class=" text-danger btn">
+					    </form>
+					</td>-->
+                </tr>
+            </tbody>
+        </table>
+	</div>	
+
+
+<footer th:insert="fragments :: footer"></footer>
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

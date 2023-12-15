@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body class="body-background">
+	<header th:insert="fragments :: header"></header>
+		<div class="container text-white">
+			<h1>Dettagli Foto</h1>
+		   		<div th:if="${foto != null}">
+			        <p>
+			            Titolo: <span th:text="${foto.titolo}"></span><br>
+			            Descrizione: <span th:text="${foto.descrizione}"></span><br>
+			            <img th:src="${foto.url}" alt="foto Image" style="max-width: 300px; max-height: 300px;" class="my-4"><br>
+			            
+			            Visibile: 
+			             <span th:if="${foto.visibile}" class="text-success">
+					        Visibile
+					    </span>
+					    <span th:unless="${foto.visibile}" class="text-danger">
+					        Non visibile
+					    </span>
+			        </p>
+			        
+		    	</div>
+			    <div th:if="${foto == null}">
+			        <p>La pizza non è stata trovata.</p>
+			    </div>
+		</div>							
+    <footer th:insert="fragments :: footer"></footer>
+</body>
+</html>

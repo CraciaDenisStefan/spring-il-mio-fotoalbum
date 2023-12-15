@@ -1,7 +1,7 @@
 package org.java.spring.db.serve;
 
 
-import java.util.List;
+import java.util.List; 
 
 import org.java.spring.db.pojo.Foto;
 import org.java.spring.db.repo.FotoRepo;
@@ -26,7 +26,10 @@ public List<Foto> findAll() {
 		
 		fotoRepo.save(foto);
 	}
-	
+	public List<Foto> findByTitolo(String query) {
+		
+		return fotoRepo.findByTitoloContainingIgnoreCase(query);
+	}
 
 	public void delete(Foto foto) {
 		
