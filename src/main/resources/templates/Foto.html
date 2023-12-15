@@ -24,7 +24,17 @@
 					        Non visibile
 					    </span>
 			        </p>
-			        
+		   			<div th:if="${not #lists.isEmpty(foto.categorie)}">
+				        <h4>Categorie</h4>
+								<ul>
+									<li
+										th:each="categoria : *{categorie}"
+										th:object="${categoria}"
+									>
+										[[*{titolo}]] 
+									</li>
+								</ul>
+		   			</div>
 		    	</div>
 			    <div th:if="${foto == null}">
 			        <p>La pizza non è stata trovata.</p>

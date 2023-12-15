@@ -1,8 +1,9 @@
 package org.java.spring.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import org.java.spring.db.pojo.Categorie;
+import org.java.spring.db.pojo.Foto;
 import org.java.spring.db.serve.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,7 +79,14 @@ public class CategorieController {
 		
 		Categorie categorie = categorieService.findById(id);
        
-   
+		 if (categorie.getFoto() != null) {
+		        for (Foto foto : categorie.getFoto()) {
+		            foto.getCategorie().remove(categorie);
+		        }
+		    }
+
+		   
+		    categorie.getFoto().clear();
 
 
         categorieService.delete(categorie);

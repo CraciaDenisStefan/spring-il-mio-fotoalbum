@@ -26,10 +26,20 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		fotoService.save(new Foto("foto1","desc1","url1",false));
+		Categorie cat1 = new Categorie("montagna");
+		Categorie cat2 = new Categorie("mare");
+		Categorie cat3 = new Categorie("lago");
+		Categorie cat4 = new Categorie("varie");
+		
+		categorieService.save(cat1);
+		categorieService.save(cat2);
+		categorieService.save(cat3);
+		categorieService.save(cat4);
+		
+		fotoService.save(new Foto("foto1","desc1","url1",false,cat1));
 		fotoService.save(new Foto("foto2","desc2","url2",true));
 		
-		categorieService.save(new Categorie("montagna"));
+
 		
 	}
 

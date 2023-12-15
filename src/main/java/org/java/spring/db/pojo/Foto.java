@@ -1,10 +1,14 @@
 package org.java.spring.db.pojo;
 
-import jakarta.persistence.Column;
+import java.util.Arrays; 
+import java.util.List;
+
+import jakarta.persistence.Column; 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -28,17 +32,20 @@ public class Foto {
 
 	@NotNull(message = "Il campo visibile è obbligatorio")
 	private Boolean visibile;
-	 
+	
+	@ManyToMany
+	private List<Categorie> categorie;
 	 
 	 public Foto() { }
-	 public Foto(String titolo, String descrizione, String url,Boolean visibile) {
+	 public Foto(String titolo, String descrizione, String url,Boolean visibile, Categorie... categorie) {
 			setTitolo(titolo);
 			setDescrizione(descrizione);
 			setUrl(url);
 			setVisibile(visibile);
-			
-		
+			setCategorie(categorie);
 		}
+	 
+
 	public int getId() {
 		return id;
 	}
@@ -71,4 +78,13 @@ public class Foto {
 	}
 	 
 	 
+	public List<Categorie> getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(List<Categorie> categorie) {
+		this.categorie = categorie;
+	}
+	public void setCategorie(Categorie... categorie) {	
+		setCategorie(Arrays.asList(categorie));
+	}
 }

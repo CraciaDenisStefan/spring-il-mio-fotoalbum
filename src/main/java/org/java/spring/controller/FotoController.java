@@ -2,7 +2,9 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.java.spring.db.pojo.Categorie;
 import org.java.spring.db.pojo.Foto;
+import org.java.spring.db.serve.CategorieService;
 import org.java.spring.db.serve.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,9 @@ public class FotoController {
 
 	@Autowired
 	private FotoService fotoService;
+	@Autowired
+	private CategorieService categorieService;
+	
 	
 	@GetMapping("/")
 	public String getFoto(Model model,@RequestParam(required = false) String search) {
@@ -40,9 +45,10 @@ public class FotoController {
 			@PathVariable int id) {
 		
 		Foto foto = fotoService.findById(id);
-		
+		List<Categorie> categorie = foto.getCategorie();
 		
 		model.addAttribute("foto", foto);
+		model.addAttribute("categorie", categorie);
 	
 		
 		return "foto";
@@ -51,10 +57,11 @@ public class FotoController {
 	@GetMapping("/foto/create")
 	public String createfoto(Model model) {
 		
-	
+		List<Categorie> categorie = categorieService.findAll();
 		Foto foto = new Foto();	
 				
 		model.addAttribute("foto", foto);
+		model.addAttribute("categorie", categorie);
 	
 		return "foto-form";
 	}
@@ -74,7 +81,9 @@ public class FotoController {
 			@PathVariable int id) {
 		
 		Foto foto = fotoService.findById(id);
+		List<Categorie> categorie = categorieService.findAll();
 		model.addAttribute("foto", foto);
+		model.addAttribute("categorie", categorie);
 		return "foto-form";
 	}
 	@PostMapping("/foto/edit/{id}")
@@ -90,7 +99,14 @@ public class FotoController {
 		
 		Foto foto = fotoService.findById(id);
        
-   
+		 if (foto.getCategorie() != null) {
+		        for (Categorie categorie : foto.getCategorie()) {
+		            categorie.getFoto().remove(foto);
+		        }
+		    }
+
+		   
+		    foto.getCategorie().clear();
 
 
         fotoService.delete(foto);

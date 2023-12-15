@@ -30,7 +30,21 @@
 			      <option value="false">Non visibile</option>
 			  </select>
               <div th:replace="fragments :: errorDiv('visibile')"/>
-
+				
+				<h4>Categorie:</h4>
+				<div th:each="categoria : ${categorie}">
+				    <input 
+				        type="checkbox"
+				        th:id="${'categoria-' + categoria.id}" 
+				        th:value="${categoria.id}" 
+				        th:field="${foto.categorie}"  
+				    >
+				    <label
+				        th:for="${'categoria-' + categoria.id}"
+				        th:text="${categoria.titolo}"
+				    ></label>
+				    <br>
+				</div>
 				
 		
             <button type="submit" class="btn btn-success mt-3" value="STORE">Salva</button>

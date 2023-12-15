@@ -15,6 +15,7 @@
                 
               <label for="titolo" class="form-label">Titolo</label>
               <input type="text" id="titolo" th:field="*{titolo}" class="form-control">
+              <div th:replace="fragments :: errorDiv('titolo')"/>
 		
             <button type="submit" class="btn btn-success mt-3" value="STORE">Salva</button>
         </form>
