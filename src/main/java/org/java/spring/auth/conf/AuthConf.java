@@ -25,6 +25,7 @@ public class AuthConf {
 	    		.authorizeHttpRequests()
 		        .requestMatchers("/api/v1.0/**").permitAll()
 		        .requestMatchers("/**").hasAuthority("ADMIN")
+		        .requestMatchers("/**").permitAll()
 		        .and().formLogin()
 		        .and().logout()
 	    ;

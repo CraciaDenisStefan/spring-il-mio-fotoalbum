@@ -2,6 +2,8 @@ package org.java.spring.db.pojo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ public class Categorie {
 	private String titolo;
 	
 	@ManyToMany(mappedBy = "categorie")
+	@JsonIgnore
 	private List<Foto> foto;
 	
 public Categorie() {
