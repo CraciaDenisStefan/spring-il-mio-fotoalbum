@@ -49,7 +49,7 @@ public class FotoController {
 	}
 	
 	@GetMapping("/foto/create")
-	public String createPizza(Model model) {
+	public String createfoto(Model model) {
 		
 	
 		Foto foto = new Foto();	
@@ -78,7 +78,7 @@ public class FotoController {
 		return "foto-form";
 	}
 	@PostMapping("/foto/edit/{id}")
-	public String updatePizza(Model model,
+	public String updatefoto(Model model,
 			@Valid @ModelAttribute Foto foto, 
 			BindingResult bindingResult) {
 		

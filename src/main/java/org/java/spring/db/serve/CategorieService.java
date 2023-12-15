@@ -1,6 +1,6 @@
 package org.java.spring.db.serve;
 
-import java.util.List;
+import java.util.List; 
 
 import org.java.spring.db.pojo.Categorie;
 import org.java.spring.db.repo.CategorieRepo;
@@ -25,7 +25,10 @@ public List<Categorie> findAll() {
 		
 		categorieRepo.save(categorie);
 	}
-	
+	public List<Categorie> findByTitolo(String query) {
+		
+		return categorieRepo.findByTitoloContainingIgnoreCase(query);
+	}
 
 	public void delete(Categorie categorie) {
 		
