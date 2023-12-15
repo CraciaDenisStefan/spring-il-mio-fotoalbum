@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body class="body-background">
+
+<div class="container my-4">
+	<h1 class="my-4">Aggiungi Foto</h1>
+         <form th:object="${foto}" method="POST" class="text-white">
+                
+              <label for="titolo" class="form-label">Nome</label>
+              <input type="text" id="titolo" th:field="*{titolo}" class="form-control">
+              <div th:replace="fragments :: errorDiv('titolo')"/>
+             
+              <label for="descrizione" class="form-label">Description</label>
+              <textarea type="text" id="descrizione" th:field="*{descrizione}" class="form-control"></textarea>
+              <div th:replace="fragments :: errorDiv('descrizione')"/>
+
+              <label for="url" class="form-label">Foto url</label>
+              <input type="text" id="url" th:field="*{url}" class="form-control">
+              <div th:replace="fragments :: errorDiv('url')"/>
+
+			  <label for="visibile" class="form-label">Visibile</label>
+			  <select id="visibile" th:field="*{visibile}" class="form-select">
+			      <option value="true">Visibile</option>
+			      <option value="false">Non visibile</option>
+			  </select>
+              <div th:replace="fragments :: errorDiv('visibile')"/>
+
+				
+		
+            <button type="submit" class="btn btn-success mt-3" value="STORE">Salva</button>
+        </form>
+        <a class="btn btn-outline-dark d-block mt-4 text-white" th:href="@{/}">Torna alla lista delle foto</a>
+</div>	
+</body>
+</html>

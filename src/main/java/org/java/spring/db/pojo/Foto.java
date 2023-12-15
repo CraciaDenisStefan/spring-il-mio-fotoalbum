@@ -1,9 +1,12 @@
 package org.java.spring.db.pojo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Foto {
@@ -11,10 +14,20 @@ public class Foto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(length = 60)
+    @NotEmpty(message = "Il campo titolo è obbligatorio")
 	 private String titolo;
+	
+	@Column(columnDefinition = "TEXT")
+    @NotEmpty(message = "Il campo descrizione è obbligatorio")
 	 private String descrizione;
+	
+	@NotEmpty(message = "Il campo fotoUrl è obbligatorio")
 	 private String url;
-	 private Boolean visibile; 
+	
+
+	@NotNull(message = "Il campo visibile è obbligatorio")
+	private Boolean visibile;
 	 
 	 
 	 public Foto() { }
