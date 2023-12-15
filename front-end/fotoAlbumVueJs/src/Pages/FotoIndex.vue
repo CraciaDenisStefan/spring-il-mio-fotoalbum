@@ -33,6 +33,7 @@ export default {
 }
 </script>
 <template lang="">
+   <router-link  :to="{name: 'Messaggio' }">Invia un email </router-link>
   <input v-model="filtroTitolo" @keyup.enter="getFoto" placeholder="Filtra per titolo" />
         <ul>
             <li class="spazio" v-for="foto in foto" :key="foto.id">
