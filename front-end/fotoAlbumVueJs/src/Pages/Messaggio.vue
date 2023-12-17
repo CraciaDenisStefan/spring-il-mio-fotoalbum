@@ -14,7 +14,7 @@ export default {
     async nuovoMessaggio() {
       try {
         await axios.post('http://localhost:8080/api/v1.0/foto', this.formMessaggio);
-        this.$router.push({ name: 'FotoIndex' });
+        this.$router.push({ name: 'Grazie' });
       } catch (error) {
         console.error('Errore durante l\'invio del messaggio', error);
       }
@@ -24,20 +24,21 @@ export default {
 </script>
 
 <template>
-    <div>
-      <h1>Messaggio</h1>
-      <form @submit.prevent="nuovoMessaggio">
-        <label for="email">Email:</label>
-        <input type="email" v-model="formMessaggio.email" required />
-  <br>
-        <label for="messaggio">Messaggio:</label>
-        <textarea v-model="formMessaggio.messaggio" required></textarea>
-  <br>
-      
-        <button type="submit">Invia</button><br>
-        <router-link :to="{ name: 'FotoIndex' }">Torna Indietro</router-link>
-      </form>
-    </div>
+ <div class="container text-white mt-5">
+    <h1>Messaggio</h1>
+    <form @submit.prevent="nuovoMessaggio" class="col-6">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" v-model="formMessaggio.email" required />
+      </div>
+      <div class="mb-3">
+        <label for="messaggio" class="form-label">Messaggio:</label>
+        <textarea class="form-control" v-model="formMessaggio.messaggio" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary me-3">Invia</button>
+      <router-link :to="{ name: 'FotoIndex' }" class="btn btn-secondary ">Torna Indietro</router-link>
+    </form>
+  </div>
   </template>
   
  

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -14,8 +15,10 @@ public class Messaggio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+
 	@Column(length = 60)
 	@NotEmpty(message = "Il campo email è obbligatorio")
+	@Email(message = "Deve essere un indirizzo email valido")
     private String email;
 	
 	@Column(columnDefinition = "TEXT")
@@ -34,7 +37,15 @@ public class Messaggio {
 
 
 
-    public String getEmail() {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
         return email;
     }
 

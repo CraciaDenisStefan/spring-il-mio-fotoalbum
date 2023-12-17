@@ -41,14 +41,19 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 		Categorie cat2 = new Categorie("mare");
 		Categorie cat3 = new Categorie("lago");
 		Categorie cat4 = new Categorie("varie");
+		Categorie cat5 = new Categorie("animali");
 		
 		categorieService.save(cat1);
 		categorieService.save(cat2);
 		categorieService.save(cat3);
 		categorieService.save(cat4);
+		categorieService.save(cat5);
 		
-		fotoService.save(new Foto("foto1","desc1","url1",false,cat1));
-		fotoService.save(new Foto("foto2","desc2","url2",true));
+		fotoService.save(new Foto("Billy","il mio cane","https://www.focus.it/images/2022/05/03/cani_1020x680.jpg",true,cat5));
+		fotoService.save(new Foto("Mochi","la mia gatta","https://wips.plug.it/cips/paginegialle.it/magazine/cms/2021/02/shutterstock_603117302.jpg?w=744&h=418&a=c",true,cat5));
+		fotoService.save(new Foto("Everest","gita in montagna","https://www.nationalgeographic.it/upload/ngi-hero/002_NationalGeographic_2758852.jpg?w=1600&h=900",true,cat1));
+		fotoService.save(new Foto("Elba","vacanza al Elba","https://www.traghetti-elbareservation.it/wp-content/uploads/2021/06/isola-delba.jpg",true,cat2));
+		fotoService.save(new Foto("Io","foto di me","https://www.seisette.it/wp-content/uploads/2016/09/Programmatore01.jpg",false));
 		
 		
 		Role roleAdmin = new Role("ADMIN");

@@ -27,18 +27,22 @@ export default {
 
 </script>
 <template>
-  <div>
-    <div class="mt-5">
-      <router-link  :to="{name: 'FotoIndex' }">Torna alla lista </router-link>
-     </div>
-    <h1>{{ foto.titolo }}</h1>
-    <p>{{ foto.descrizione }}</p>
-    <img :src="foto.url" alt="Immagine" />
+  <div class="container mt-5 text-white">
+    <div class="mb-3">
+      <router-link :to="{name: 'FotoIndex' }" class="btn btn-secondary">Torna alla lista</router-link>
+    </div>
+    <h1 class="display-4">{{ foto.titolo }}</h1>
+    <p class="lead">{{ foto.descrizione }}</p>
+    <img :src="foto.url" alt="Immagine" class="img-fluid rounded">
+
+    <p class="mt-2" v-if="foto.categorie && foto.categorie.length > 0">
+          Categorie: {{ foto.categorie.map(categoria => categoria.titolo).join(', ') }}
+    </p>
   </div>
 </template>
 <style >
 img{
-  width: 20rem;
+  width: 30rem;
 }
 </style>
 

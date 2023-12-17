@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import FotoIndex from './pages/FotoIndex.vue';
 import Foto from './pages/Foto.vue';
 import Messaggio from './pages/Messaggio.vue';
+import Grazie from './pages/GraziePage.vue';
 
 const router = createRouter({
 
@@ -23,6 +24,11 @@ const router = createRouter({
             path: '/messaggio',
             name: 'Messaggio',
             component: Messaggio,
+        },
+        {
+            path: '/grazie',
+            name: 'Grazie',
+            component: Grazie,
         },
     ]
 
