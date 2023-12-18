@@ -13,7 +13,7 @@
          <form th:object="${foto}" method="POST" class="text-white">
                 
               <label for="titolo" class="form-label">Nome</label>
-              <input type="text" id="titolo" th:field="*{titolo}" class="form-control">
+              <input  type="text" id="titolo" th:field="*{titolo}" class="form-control">
               <div th:replace="fragments :: errorDiv('titolo')"/>
              
               <label for="descrizione" class="form-label">Description</label>
@@ -22,15 +22,7 @@
 
               <label for="url" class="form-label">Foto url</label>
               <input type="text" id="url" th:field="*{url}" class="form-control">
-              <div th:replace="fragments :: errorDiv('url')"/>
-
-			  <label for="visibile" class="form-label">Visibile</label>
-			  <select id="visibile" th:field="*{visibile}" class="form-select">
-			      <option value="true">Visibile</option>
-			      <option value="false">Non visibile</option>
-			  </select>
-              <div th:replace="fragments :: errorDiv('visibile')"/>
-				
+              <div th:replace="fragments :: errorDiv('url')"/>		
 				<h4>Categorie:</h4>
 				<div th:each="categoria : ${categorie}">
 				    <input 
@@ -45,6 +37,12 @@
 				    ></label>
 				    <br>
 				</div>
+			  <label for="visibile" class="form-label mt-4">Visibile</label>
+			  <select id="visibile" th:field="*{visibile}" class="form-select">
+			      <option value="true">Visibile</option>
+			      <option value="false">Non visibile</option>
+			  </select>
+              <div th:replace="fragments :: errorDiv('visibile')"/>
 				
 		
             <button type="submit" class="btn btn-success mt-3" value="STORE">Salva</button>

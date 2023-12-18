@@ -15,14 +15,16 @@
 	                    <a class="nav-link text-white" th:href="@{/}">Home</a>
 	                </li>
 	                 <li class="nav-item">
-	                    <a class="nav-link text-white" th:href="@{/foto/create}">Aggiungi Foto</a>
+	                    <a class="nav-link text-white" th:href="@{/foto/create}" sec:authorize="hasAuthority('ADMIN')">Aggiungi Foto</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link text-white" th:href="@{/categorie}">Categorie</a>
+	                    <a class="nav-link text-white" th:href="@{/categorie}" sec:authorize="hasAuthority('SUPERADMIN')">Categorie</a>
 	                </li>
 	                  <li class="nav-item">
-	                    <a class="nav-link text-white" th:href="@{/messaggi}">Messaggi</a>
+	                    <a class="nav-link text-white" th:href="@{/messaggi}" sec:authorize="hasAuthority('SUPERADMIN')">Messaggi</a>
 	                </li>
+	                 <li class="nav-item">
+	                  <a class="nav-link text-white" th:href="@{/logout}">Log-Out</a>
 	        </div>
    	 	</nav>
    	 	<hr><hr>

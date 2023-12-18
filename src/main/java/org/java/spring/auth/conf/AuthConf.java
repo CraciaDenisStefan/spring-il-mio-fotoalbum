@@ -24,7 +24,7 @@ public class AuthConf {
 	    		.cors().disable()
 	    		.authorizeHttpRequests()
 		        .requestMatchers("/api/v1.0/**").permitAll()
-		        .requestMatchers("/**").hasAuthority("ADMIN")
+		        .requestMatchers("/**").hasAnyAuthority("ADMIN","SUPERADMIN")
 		        .requestMatchers("/**").permitAll()
 		        .and().formLogin()
 		        .and().logout()

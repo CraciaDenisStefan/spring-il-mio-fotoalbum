@@ -3,12 +3,16 @@ package org.java.spring.db.pojo;
 import java.util.Arrays; 
 import java.util.List;
 
+import org.java.spring.auth.db.pojo.User;
+
 import jakarta.persistence.Column; 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -35,14 +39,19 @@ public class Foto {
 	
 	@ManyToMany
 	private List<Categorie> categorie;
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 	 
 	 public Foto() { }
-	 public Foto(String titolo, String descrizione, String url,Boolean visibile, Categorie... categorie) {
+	 public Foto(String titolo, String descrizione, String url,Boolean visibile , User user, Categorie... categorie) {
 			setTitolo(titolo);
 			setDescrizione(descrizione);
 			setUrl(url);
 			setVisibile(visibile);
 			setCategorie(categorie);
+			setUser(user);
 		}
 	 
 
@@ -87,4 +96,13 @@ public class Foto {
 	public void setCategorie(Categorie... categorie) {	
 		setCategorie(Arrays.asList(categorie));
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
 }

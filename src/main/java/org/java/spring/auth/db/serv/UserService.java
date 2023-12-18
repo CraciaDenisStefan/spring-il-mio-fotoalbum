@@ -20,6 +20,9 @@ public class UserService implements UserDetailsService {
 		
 		return userRepo.findAll();
 	}
+	public User findByUsername(String user) {
+	    return userRepo.findByUsername(user);
+	}
 	public User findById(int id) {
 		
 		return userRepo.findById(id).get();

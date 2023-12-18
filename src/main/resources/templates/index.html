@@ -22,7 +22,7 @@
 			<table class="table table-bordered">
             <thead>
                 <tr >
-					<th class="bg-transparent"></th>
+					<th class="bg-transparent" sec:authorize="hasAuthority('ADMIN')"></th>
                     <th class="bg-transparent">Titolo</th>
                     <th class="bg-transparent">Descrizione</th>
                     <th class="bg-transparent">Foto</th>
@@ -32,7 +32,7 @@
             </thead>
             <tbody>
                 <tr th:each="foto : ${foto}" >
-					<td class="bg-transparent "><a th:href="@{/foto/{id}(id=${foto.id})}"  class="text-decoration-none text-warning btn">Apri</a></td>
+					<td class="bg-transparent " sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/foto/{id}(id=${foto.id})}"  class="text-decoration-none text-warning btn">Apri</a></td>
                     <td class="bg-transparent text-white" th:text="${foto.titolo}"></a></td>
                     <td class="bg-transparent text-white" th:text="${foto.descrizione}"></td>
                     <td class="bg-transparent text-white"><img th:src="${foto.url}" alt="foto Image" style="max-width: 100px; max-height: 100px;"></td>
@@ -46,7 +46,7 @@
 					</td>
 					<td class="bg-transparent "><a th:href="@{/foto/edit/{id}(id=${foto.id})}"  class="text-decoration-none text-warning btn">Modifica</a><br> 
                 	
-					    <form th:action="@{/foto/delete/{id}(id=${foto.id})}" method="POST">
+					    <form th:action="@{/foto/delete/{id}(id=${foto.id})}" method="POST" sec:authorize="hasAuthority('ADMIN')">
 					        <input type="submit" value="Elimina" class=" text-danger btn">
 					    </form>
 					</td>

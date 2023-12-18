@@ -49,26 +49,38 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 		categorieService.save(cat4);
 		categorieService.save(cat5);
 		
-		fotoService.save(new Foto("Billy","il mio cane","https://www.focus.it/images/2022/05/03/cani_1020x680.jpg",true,cat5));
-		fotoService.save(new Foto("Mochi","la mia gatta","https://wips.plug.it/cips/paginegialle.it/magazine/cms/2021/02/shutterstock_603117302.jpg?w=744&h=418&a=c",true,cat5));
-		fotoService.save(new Foto("Everest","gita in montagna","https://www.nationalgeographic.it/upload/ngi-hero/002_NationalGeographic_2758852.jpg?w=1600&h=900",true,cat1));
-		fotoService.save(new Foto("Elba","vacanza al Elba","https://www.traghetti-elbareservation.it/wp-content/uploads/2021/06/isola-delba.jpg",true,cat2));
-		fotoService.save(new Foto("Io","foto di me","https://www.seisette.it/wp-content/uploads/2016/09/Programmatore01.jpg",false));
-		
-		
 		Role roleAdmin = new Role("ADMIN");
-
+		Role roleSuperadmin = new Role("SUPERADMIN");
 		
-
+	    roleService.save(roleSuperadmin);
 		roleService.save(roleAdmin);
 		
 		String pws = AuthConf.passwordEncoder().encode("pws");
 		
 
 		User Admin = new User("Admin", pws, roleAdmin);
-		
+		User Admin2 = new User("Admin2", pws, roleAdmin);
+		User superadmin = new User("SuperAdmin", pws, roleSuperadmin);
 
 		userService.save(Admin);
+		userService.save(Admin2);
+		userService.save(superadmin);
+		
+		fotoService.save(new Foto("Billy","il mio cane","https://www.focus.it/images/2022/05/03/cani_1020x680.jpg",true,Admin,cat5));
+		fotoService.save(new Foto("Mochi","la mia gatta","https://wips.plug.it/cips/paginegialle.it/magazine/cms/2021/02/shutterstock_603117302.jpg?w=744&h=418&a=c",true,Admin,cat5));
+		fotoService.save(new Foto("Everest","gita in montagna","https://www.nationalgeographic.it/upload/ngi-hero/002_NationalGeographic_2758852.jpg?w=1600&h=900",true,Admin2,cat1));
+		fotoService.save(new Foto("Elba","vacanza al Elba","https://www.traghetti-elbareservation.it/wp-content/uploads/2021/06/isola-delba.jpg",true,Admin2,cat2));
+		fotoService.save(new Foto("Io","foto di me","https://www.seisette.it/wp-content/uploads/2016/09/Programmatore01.jpg",false,Admin));
+		
+		
+		
+		
+		
+	
+
+	 
+	 
+	   
 		
 	}
 
